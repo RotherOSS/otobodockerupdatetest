@@ -120,7 +120,7 @@ jobs:
         with:
           load: true
           context: .
-          file: otobo.web.dockerfile
+          file: ${{ matrix.dockerfile }}
           pull: true
           build-args: |
             BUILD_DATE=${{ env.otobo_build_date }}
@@ -136,7 +136,7 @@ jobs:
       -
         # otobo_first_time hasn't run yet, so /opt/otobodockerupdatetest is still empty
         name: Info
-        if: steps.check.outputs.needs-updating == 'true'
+        if: ${{ steps.check.outputs.needs-updating == 'true' && matrix.target == 'otobodockerupdatetest-web' }}
         run: |
           docker run --rm -w /opt/otobo_install/otobo_next --entrypoint /bin/bash $otobo_image -c "more git-repo.txt git-branch.txt git-commit.txt RELEASE | cat"
 
@@ -158,7 +158,7 @@ jobs:
         with:
           push: true
           context: .
-          file: otobo.web.dockerfile
+          file: ${{ matrix.dockerfile }}
           pull: true
           build-args: |
             BUILD_DATE=${{ env.otobo_build_date }}
