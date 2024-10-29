@@ -64,7 +64,7 @@ jobs:
       - name: Setting up the environment file
         run: |
           patch=${{ matrix.patch }}
-          docker_tag="rel-${patch}_otobodockerupdatetest"
+          docker_tag="rel-${patch}"
           mixed_case_repository="${{ github.repository }}"
           lowercased_repository="${mixed_case_repository,,}"
           build_date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
