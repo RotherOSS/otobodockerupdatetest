@@ -19,8 +19,8 @@ on:
 
 jobs:
   CheckDockerImageUpdate:
+    runs-on: 'ubuntu-latest'
     strategy:
-    runs-on: ubuntu-latest
       # create different images
       # note that there is no release build for the otobodockerupdatetest-web-kerberos target
       matrix:
