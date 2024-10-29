@@ -69,7 +69,7 @@ jobs:
           lowercased_repository="${mixed_case_repository,,}"
           build_date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
           (
-            echo "otobo_branch=rel-${matrix.patch}"
+            echo "otobo_branch=rel-${patch}"
             echo "otobo_base_image=${{ matrix.base_image }}"
             echo "otobo_docker_tag=${docker_tag}"
             echo "otobo_image=${lowercased_repository}:${docker_tag}"
