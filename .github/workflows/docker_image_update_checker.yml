@@ -38,25 +38,25 @@ jobs:
             dockerfile: 'otobo.elasticsearch.dockerfile'
             context:    'scripts/elasticsearch'
             repository: 'rotheross/otobodockerupdatetest'
-            base_image: 'docker.elastic.co/elasticsearch/elasticsearch:7.17.25'
+            base_image: 'elasticsearch:7.17.25'
           -
             target:     'otobodockerupdatetest-nginx-webproxy'
             dockerfile: 'otobo.nginx.dockerfile'
             context:    'scripts/nginx'
             repository: 'rotheross/otobodockerupdatetest'
             base_image: 'nginx:mainline'
-          -
-            target:     'otobodockerupdatetest-nginx-kerberos-webproxy'
-            dockerfile: 'otobo.nginx.dockerfile'
-            context:    'scripts/nginx'
-            repository: 'rotheross/otobodockerupdatetest'
-            base_image: 'nginx:mainline'
-          -
-            target:     'otobodockerupdatetest-selenium-chrome'
-            dockerfile: 'otobo.selenium-chrome.dockerfile'
-            context:    'scripts/test/sample'
-            repository: 'rotheross/otobodockerupdatetest'
-            base_image: 'selenium/standalone-chrome-debug:3.141.59-20210422'
+#          -
+#            target:     'otobodockerupdatetest-nginx-kerberos-webproxy'
+#            dockerfile: 'otobo.nginx.dockerfile'
+#            context:    'scripts/nginx'
+#            repository: 'rotheross/otobodockerupdatetest'
+#            base_image: 'nginx:mainline'
+#          -
+#            target:     'otobodockerupdatetest-selenium-chrome'
+#            dockerfile: 'otobo.selenium-chrome.dockerfile'
+#            context:    'scripts/test/sample'
+#            repository: 'rotheross/otobodockerupdatetest'
+#            base_image: 'selenium/standalone-chrome-debug:3.141.59-20210422'
 
 #    runs-on: ${{ matrix.target }}
     steps:
