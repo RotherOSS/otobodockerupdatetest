@@ -119,7 +119,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           load: true
-          context: .
+          context: ${{ matrix.context }}
           file: ${{ matrix.dockerfile }}
           pull: true
           build-args: |
@@ -157,7 +157,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          context: .
+          context: ${{ matrix.context }}
           file: ${{ matrix.dockerfile }}
           pull: true
           build-args: |
