@@ -20,7 +20,7 @@ on:
 jobs:
   CheckDockerImageUpdate:
     strategy:
-
+    runs-on: ubuntu-latest
       # create different images
       # note that there is no release build for the otobodockerupdatetest-web-kerberos target
       matrix:
@@ -58,7 +58,7 @@ jobs:
             repository: 'rotheross/otobodockerupdatetest'
             base_image: 'selenium/standalone-chrome-debug:3.141.59-20210422'
 
-    runs-on: ${{ matrix.target }}
+#    runs-on: ${{ matrix.target }}
     steps:
 
       - name: Setting up the environment file
