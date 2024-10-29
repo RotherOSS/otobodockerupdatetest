@@ -27,34 +27,34 @@ jobs:
       # create different images
       # note that there is no release build for the otobo-web-kerberos target
       matrix:
-        target:     [ 'otobodockerupdatetest-web', 'otobodockerupdatetest-elasticsearch', 'otobodockerupdatetest-nginx-webproxy', 'otobodockerupdatetest-nginx-kerberos-webproxy', 'otobodockerupdatetest-selenium-chrome' ]
+        target:     [ 'otobo-web', 'otobo-elasticsearch', 'otobo-nginx-webproxy', 'otobo-nginx-kerberos-webproxy', 'otobo-selenium-chrome' ]
         include:
           -
-            target:     'otobodockerupdatetest-web'
+            target:     'otobo-web'
             dockerfile: 'otobo.web.dockerfile'
             context:    '.'
             repository: 'rotheross/otobodockerupdatetest'
             latest:     true
           -
-            target:     'otobodockerupdatetest-elasticsearch'
+            target:     'otobo-elasticsearch'
             dockerfile: 'otobo.elasticsearch.dockerfile'
             context:    'scripts/elasticsearch'
             repository: 'rotheross/otobodockerupdatetest-elasticsearch'
             latest:     true
           -
-            target:     'otobodockerupdatetest-nginx-webproxy'
+            target:     'otobo-nginx-webproxy'
             dockerfile: 'otobo.nginx.dockerfile'
             context:    'scripts/nginx'
             repository: 'rotheross/otobodockerupdatetest-nginx-webproxy'
             latest:     true
           -
-            target:     'otobodockerupdatetest-nginx-kerberos-webproxy'
+            target:     'otobo-nginx-kerberos-webproxy'
             dockerfile: 'otobo.nginx.dockerfile'
             context:    'scripts/nginx'
             repository: 'rotheross/otobodockerupdatetest-nginx-kerberos-webproxy'
             latest:     true
           -
-            target:     'otobodockerupdatetest-selenium-chrome'
+            target:     'otobo-selenium-chrome'
             dockerfile: 'otobo.selenium-chrome.dockerfile'
             context:    'scripts/test/sample'
             repository: 'rotheross/otobodockerupdatetest-selenium-chrome'
