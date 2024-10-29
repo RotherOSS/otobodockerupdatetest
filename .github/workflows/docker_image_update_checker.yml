@@ -24,23 +24,23 @@ jobs:
       # create different images
       # note that there is no release build for the otobodockerupdatetest-web-kerberos target
       matrix:
-        target: [ 'otobodockerupdatetest-web', 'otobodockerupdatetest-elasticsearch', 'otobodockerupdatetest-nginx-webproxy' ]
+        target: [ 'otobo-web', 'otobo-elasticsearch', 'otobo-nginx-webproxy' ]
         patch: [ '11_0_5', '11_0_6' ]
         include:
           -
-            target:     'otobodockerupdatetest-web'
+            target:     'otobo-web'
             dockerfile: 'otobo.web.dockerfile'
             context:    '.'
             repository: 'rotheross/otobodockerupdatetest'
             base_image: 'perl:5.38-bookworm'
           -
-            target:     'otobodockerupdatetest-elasticsearch'
+            target:     'otobo-elasticsearch'
             dockerfile: 'otobo.elasticsearch.dockerfile'
             context:    'scripts/elasticsearch'
             repository: 'rotheross/otobodockerupdatetest-elasticsearch'
             base_image: 'elasticsearch:7.17.25'
           -
-            target:     'otobodockerupdatetest-nginx-webproxy'
+            target:     'otobo-nginx-webproxy'
             dockerfile: 'otobo.nginx.dockerfile'
             context:    'scripts/nginx'
             repository: 'rotheross/otobodockerupdatetest-nginx-webproxy'
@@ -131,7 +131,7 @@ jobs:
 #          target: ${{ matrix.target }}
           tags: ${{ env.otobo_image }}
           cache-from: type=gha
-          cache-to: type=gha,mode=max`
+          cache-to: type=gha,mode=max
 
       -
         # otobo_first_time hasn't run yet, so /opt/otobodockerupdatetest is still empty
