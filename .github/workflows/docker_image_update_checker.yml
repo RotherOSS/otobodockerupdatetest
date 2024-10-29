@@ -59,12 +59,12 @@ jobs:
             repository: 'rotheross/otobodockerupdatetest'
             base_image: 'selenium/standalone-chrome-debug:3.141.59-20210422'
 
-
+    runs-on: ${{ matrix.target }}
     steps:
 
       - name: Setting up the environment file
         run: |
-          patch="${{ matrix.patch }}"
+          patch=${{ matrix.patch }}
           docker_tag="rel-${patch}_otobodockerupdatetest"
           mixed_case_repository="${{ github.repository }}"
           lowercased_repository="${mixed_case_repository,,}"
