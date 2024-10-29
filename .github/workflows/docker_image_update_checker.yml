@@ -19,7 +19,6 @@ on:
 
 jobs:
   CheckDockerImageUpdate:
-    runs-on: 'ubuntu-latest'
     strategy:
 
       # create different images
