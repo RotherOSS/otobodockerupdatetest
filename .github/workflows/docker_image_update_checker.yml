@@ -24,7 +24,7 @@ jobs:
       # create different images
       # note that there is no release build for the otobodockerupdatetest-web-kerberos target
       matrix:
-        target: [ 'otobodockerupdatetest-web', 'otobo-elasticsearch', 'otobo-nginx-webproxy', 'otobo-nginx-kerberos-webproxy', 'otobo-selenium-chrome' ]
+        target: [ 'otobodockerupdatetest-web', 'otobodockerupdatetest-elasticsearch', 'otobodockerupdatetest-nginx-webproxy' ]
         patch: [ '11_0_5', '11_0_6' ]
         include:
           -
