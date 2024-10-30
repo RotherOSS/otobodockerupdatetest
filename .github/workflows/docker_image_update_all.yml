@@ -46,14 +46,12 @@ jobs:
         run: |
           patch=${{ matrix.docker_tag }}
           docker_tag=${{ matrix.docker_tag }}
-          mixed_case_repository="${{ github.repository }}"
-          lowercased_repository="${mixed_case_repository,,}"
           build_date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
           (
             echo "otobo_branch=${patch}"
-            echo "otobo_base_image=${{ matrix.base_image }}"
             echo "otobo_docker_tag=${docker_tag}"
-            echo "otobo_image=${lowercased_repository}:${docker_tag}"
+            echo "otobo_ref=${{ matrix.repository }}:${docker_tag}"
+            echo "otobo_base_image=${{ matrix.base_image }}"
             echo "otobo_build_date=${build_date}"
           ) >> $GITHUB_ENV
 
@@ -62,14 +60,12 @@ jobs:
         run: |
           patch=${{ matrix.patch }}
           docker_tag=${{ matrix.docker_tag }}
-          mixed_case_repository="${{ github.repository }}"
-          lowercased_repository="${mixed_case_repository,,}"
           build_date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
           (
             echo "otobo_branch=${patch}"
-            echo "otobo_base_image=${{ matrix.base_image }}"
             echo "otobo_docker_tag=${docker_tag}"
-            echo "otobo_image=${lowercased_repository}:${docker_tag}"
+            echo "otobo_ref=${{ matrix.repository }}:${docker_tag}"
+            echo "otobo_base_image=${{ matrix.base_image }}"
             echo "otobo_build_date=${build_date}"
           ) >> $GITHUB_ENV
 
@@ -107,7 +103,7 @@ jobs:
             GIT_BRANCH=${{ env.otobo_branch }}
             GIT_COMMIT=${{ env.otobo_commit }}
           target: ${{ matrix.target }}
-          tags: ${{ env.otobo_image }}
+          tags: ${{ env.otobo_ref }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -115,7 +111,7 @@ jobs:
         # otobo_first_time hasn't run yet, so /opt/otobodockerupdatetest is still empty
         name: Info
         run: |
-          docker run --rm -w /opt/otobo_install/otobo_next --entrypoint /bin/bash $otobo_image -c "more git-repo.txt git-branch.txt git-commit.txt RELEASE | cat"
+          docker run --rm -w /opt/otobo_install/otobo_next --entrypoint /bin/bash $otobo_ref -c "more git-repo.txt git-branch.txt git-commit.txt RELEASE | cat"
 
       -
         # login to Docker Hub only after the build
@@ -142,6 +138,6 @@ jobs:
             GIT_BRANCH=${{ env.otobo_branch }}
             GIT_COMMIT=${{ env.otobo_commit }}
           target: ${{ matrix.target }}
-          tags: ${{ env.otobo_image }}
+          tags: ${{ env.otobo_ref }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
