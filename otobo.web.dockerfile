@@ -51,7 +51,7 @@ RUN apt-get update\
  "ldap-utils"\
  "less"\
  "nano"\
- "odbcinst1debian2" "libodbc1" "odbcinst" "unixodbc-dev" "unixodbc"\
+ "odbcinst2" "libodbc2" "unixodbc-common" "unixodbc-dev" "unixodbc"\
  "freetds-bin" "freetds-common" "tdsodbc"\
  "postgresql-client"\
  "redis-tools"\
@@ -62,7 +62,6 @@ RUN apt-get update\
  "tree"\
  "vim"\
  "chromium"\
- "chromium-sandbox"\
  "libqrencode-dev"\
  "perl"\
  "cpanminus"\
