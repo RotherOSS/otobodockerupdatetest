@@ -14,7 +14,7 @@
 # Note that the minor version of Debian may change between builds.
 #
 # The individual build targets may add additional Debian or CPAN packages.
-FROM ubuntu:24.04 AS base
+FROM alpine:latest AS base
 
 # First there is some initial setup that needs to be done by root.
 USER root
@@ -42,8 +42,8 @@ USER root
 ENV OTOBO_USER=otobo
 ENV OTOBO_GROUP=otobo
 ENV OTOBO_HOME=/opt/otobo
-RUN apt-get update\
- && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install\
+RUN apk update\
+ && DEBIAN_FRONTEND=noninteractive apk -y --no-install-recommends install\
  "ack"\
  "cron"\
  "default-mysql-client"\
@@ -207,8 +207,8 @@ FROM base AS otobo-web-kerberos
 USER root
 
 # install Kerberos related Debian packages
-RUN apt-get update\
- && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install\
+RUN apk update\
+ && DEBIAN_FRONTEND=noninteractive apk -y --no-install-recommends install\
  "krb5-user"\
  "libpam-krb5"\
  "libpam-ccreds"\
