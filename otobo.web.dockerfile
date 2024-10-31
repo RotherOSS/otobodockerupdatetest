@@ -89,9 +89,9 @@ WORKDIR /opt/otobo_install
 COPY cpanfile.docker cpanfile
 ENV PERL5LIB="/opt/otobo_install/local/lib/perl5"
 ENV PATH="/opt/otobo_install/local/bin:${PATH}"
-RUN cpanm --local-lib local Carton\
- && PERL_CPANM_OPT="--local-lib /opt/otobo_install/local" carton install\
- && rm -rf "/root/.cpanm"
+#RUN cpanm --local-lib local Carton\
+# && PERL_CPANM_OPT="--local-lib /opt/otobo_install/local" carton install\
+# && rm -rf "/root/.cpanm"
 
 # Add some additional meta info to the image.
 # This done at the end of the Dockerfile as changed labels and changed args invalidate the layer cache.
