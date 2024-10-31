@@ -14,7 +14,7 @@
 # Note that the minor version of Debian may change between builds.
 #
 # The individual build targets may add additional Debian or CPAN packages.
-FROM debian:12-slim AS base
+FROM ubuntu:24.04 AS base
 
 # First there is some initial setup that needs to be done by root.
 USER root
