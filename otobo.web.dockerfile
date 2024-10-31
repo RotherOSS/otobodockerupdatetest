@@ -64,6 +64,7 @@ RUN apt-get update\
  "chromium"\
  "chromium-sandbox"\
  "libqrencode-dev"\
+ "perl"\
  "cpanminus"\
  "carton"\
  "make"\
