@@ -14,7 +14,7 @@
 # Note that the minor version of Debian may change between builds.
 #
 # The individual build targets may add additional Debian or CPAN packages.
-FROM alpine:latest AS base
+FROM debian:12-slim AS base
 
 # First there is some initial setup that needs to be done by root.
 USER root
@@ -42,9 +42,8 @@ USER root
 ENV OTOBO_USER=otobo
 ENV OTOBO_GROUP=otobo
 ENV OTOBO_HOME=/opt/otobo
-RUN apk update\
- && apk upgrade\
- && apk --no-cache add\
+RUN apt-get update\
+ && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install\
  "ack"\
  "cron"\
  "default-mysql-client"\
@@ -52,7 +51,7 @@ RUN apk update\
  "ldap-utils"\
  "less"\
  "nano"\
- "libodbc2" "unixodbc-common" "unixodbc-dev" "unixodbc"\
+ "odbcinst1debian2" "libodbc1" "odbcinst" "unixodbc-dev" "unixodbc"\
  "freetds-bin" "freetds-common" "tdsodbc"\
  "postgresql-client"\
  "redis-tools"\
@@ -63,12 +62,8 @@ RUN apk update\
  "tree"\
  "vim"\
  "chromium"\
+ "chromium-sandbox"\
  "libqrencode-dev"\
- "perl"\
- "cpanminus"\
- "carton"\
- "make"\
- "gcc"\
  && useradd --user-group --home-dir $OTOBO_HOME --create-home --shell /bin/bash --comment 'OTOBO user' $OTOBO_USER\
  && install -d /opt/otobo_install\
  && install --group $OTOBO_GROUP --owner $OTOBO_USER -d $OTOBO_HOME
@@ -208,9 +203,8 @@ FROM base AS otobo-web-kerberos
 USER root
 
 # install Kerberos related Debian packages
-RUN apk update\
- && apk upgrade\
- && apk --no-cache add\ 
+RUN apt-get update\
+ && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install\
  "krb5-user"\
  "libpam-krb5"\
  "libpam-ccreds"\
