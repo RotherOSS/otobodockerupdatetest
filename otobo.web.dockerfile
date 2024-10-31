@@ -14,7 +14,7 @@
 # Note that the minor version of Debian may change between builds.
 #
 # The individual build targets may add additional Debian or CPAN packages.
-FROM perl:5.38-bookworm AS base
+FROM debian:12-slim AS base
 
 # First there is some initial setup that needs to be done by root.
 USER root
