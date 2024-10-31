@@ -65,7 +65,9 @@ RUN apt-get update\
  "chromium-sandbox"\
  "libqrencode-dev"\
  "cpanminus"\
- "make"\ 
+ "carton"\
+ "make"\
+ "gcc"\
  && useradd --user-group --home-dir $OTOBO_HOME --create-home --shell /bin/bash --comment 'OTOBO user' $OTOBO_USER\
  && install -d /opt/otobo_install\
  && install --group $OTOBO_GROUP --owner $OTOBO_USER -d $OTOBO_HOME
