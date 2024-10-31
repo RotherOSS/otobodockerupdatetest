@@ -51,7 +51,7 @@ RUN apt-get update\
  "ldap-utils"\
  "less"\
  "nano"\
- "odbcinst2" "libodbc2" "unixodbc-common" "unixodbc-dev" "unixodbc"\
+ "libodbc2" "unixodbc-common" "unixodbc-dev" "unixodbc"\
  "freetds-bin" "freetds-common" "tdsodbc"\
  "postgresql-client"\
  "redis-tools"\
