@@ -43,7 +43,8 @@ ENV OTOBO_USER=otobo
 ENV OTOBO_GROUP=otobo
 ENV OTOBO_HOME=/opt/otobo
 RUN apk update\
- && DEBIAN_FRONTEND=noninteractive apk -y --no-install-recommends install\
+ && apk upgrade\
+ && apk --no-cache add\
  "ack"\
  "cron"\
  "default-mysql-client"\
@@ -208,7 +209,8 @@ USER root
 
 # install Kerberos related Debian packages
 RUN apk update\
- && DEBIAN_FRONTEND=noninteractive apk -y --no-install-recommends install\
+ && apk upgrade\
+ && apk --no-cache add\ 
  "krb5-user"\
  "libpam-krb5"\
  "libpam-ccreds"\
